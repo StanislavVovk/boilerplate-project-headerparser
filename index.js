@@ -13,7 +13,7 @@ app.get('/', function (req, res) {
 
 app.get('/api/whoami', (req, res) => {
   const headers = req.headers
-  res.json({"ipaddress": headers.host, "language": headers["accept-language"], "software": headers["user-agent"]})
+  res.json({"ipaddress": req.socket.remoteAddress, "language": headers["accept-language"], "software": headers["user-agent"]})
 })
 
 const listener = app.listen(process.env.PORT || 3000, function () {
